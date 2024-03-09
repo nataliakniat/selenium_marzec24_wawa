@@ -61,5 +61,54 @@ driver.switch_to.frame(driver.find_element("id", "iframeResult"))
 fname = driver.find_element("id", "fname")
 fname.send_keys("Natalia")
 
-time.sleep(600)
+lname = driver.find_element("id", "lname")
+if lname.is_enabled():
+    lname.send_keys("Burda")
+else:
+    print("Nie można wpisac nazwiska")
+
+# zamkniecie zakładki
+driver.close()
+
+driver.switch_to.window(currentWindow)
+print("Aktualne okno po powrocie: ", driver.title)
+
+# cofniecie się
+driver.back()
+
+# wybranie menu 'Checkbox'
+menuCheckbox = driver.find_element("xpath", "//*[@id='main']/table[2]/tbody/tr[6]/td[1]/a")
+menuCheckbox.click()
+
+# klikniecie 'Try it yourself'
+tryIt = driver.find_element("xpath", "//*[@id='main']/div[2]/a")
+tryIt.click()
+
+print("Aktualne okno: ", driver.title)
+
+# obecna zakładka (okno)
+currentWindow = driver.current_window_handle
+
+# wszystkie zakładki (okna)
+windowsNames = driver.window_handles
+
+for window in windowsNames:
+    if window != currentWindow:
+        driver.switch_to.window(window)
+
+print("Aktualne okno po przełączeniu: ", driver.title)
+
+# przełączenie do ramki
+driver.switch_to.frame(driver.find_element("id", "iframeResult"))
+
+# zaznaczanie checkboxa
+bike = driver.find_element("name", "vehicle1")
+bike.click()
+
+if bike.is_selected():
+    print("Poprawnie zaznaczono")
+
+# wroc do poprzedniego okna TO DO
+
+time.sleep(5)
 driver.quit()
