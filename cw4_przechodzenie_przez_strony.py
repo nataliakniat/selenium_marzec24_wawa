@@ -24,9 +24,42 @@ webdriver.ActionChains(driver).move_to_element(menu).click().perform()
 learnHTML = driver.find_element("xpath", "//a[@title='HTML Tutorial']")
 learnHTML.click()
 
-# wybranie menu 'Input types'
-menuInput = driver.find_element("xpath", "//*[@id='leftmenuinnerinner']/a[43]")
+# wybranie menu 'Tag list'
+menuTag = driver.find_element("xpath", "//*[@id='leftmenuinnerinner']/a[67]")
+menuTag.click()
+
+# wybranie menu 'Input'
+menuInput = driver.find_element("xpath", "//*[@id='leftmenuinnerinner']/div/a[59]")
 menuInput.click()
+
+# wybranie menu 'Disable'
+menuDisable = driver.find_element("xpath", "//*[@id='main']/table[2]/tbody/tr[8]/td[1]/a")
+menuDisable.click()
+
+# klikniecie 'Try it yourself'
+tryIt = driver.find_element("xpath", "//*[@id='main']/div[2]/a")
+tryIt.click()
+
+print("Aktualne okno: ", driver.title)
+
+# obecna zakładka (okno)
+currentWindow = driver.current_window_handle
+
+# wszystkie zakładki (okna)
+windowsNames = driver.window_handles
+
+for window in windowsNames:
+    if window != currentWindow:
+        driver.switch_to.window(window)
+
+print("Aktualne okno po przełączeniu: ", driver.title)
+
+# przełączenie do ramki
+driver.switch_to.frame(driver.find_element("id", "iframeResult"))
+
+# wprowadzenie imienia
+fname = driver.find_element("id", "fname")
+fname.send_keys("Natalia")
 
 time.sleep(600)
 driver.quit()
