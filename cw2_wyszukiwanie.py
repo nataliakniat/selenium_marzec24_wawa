@@ -1,5 +1,6 @@
 import time
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
 # inicjalizacja przegladarki Chrome
 driver = webdriver.Chrome()
@@ -12,7 +13,17 @@ driver.get(url)
 # maksymalizacja okna
 driver.maximize_window()
 
-time.sleep(60)
+# zaakceptuj zgody
+accept = driver.find_element("id", "L2AGLb")
+accept.click()
+
+# wyszukiwarka
+search = driver.find_element("name", "q")
+search.send_keys("Pogoda")
+search.send_keys(Keys.ENTER)
+# search.submit()
+
+time.sleep(600)
 
 # zamknicie przegladarki
 driver.quit()
