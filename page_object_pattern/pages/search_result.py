@@ -1,8 +1,11 @@
+from page_object_pattern.locators.locators import SearchResultLocators
+
+
 class SearchResultPage:
 
     def __init__(self, driver):
         self.driver = driver
-        self.hotel_names_xpath = "//h4[contains(@class, 'list_title')]"
+        self.hotel_names_xpath = SearchResultLocators.hotel_names_xpath
         # TO DO: dodac atrybut do wyswietlenia cen
 
     def get_hotels_name(self):
