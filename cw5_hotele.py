@@ -30,10 +30,16 @@ driver.find_element("xpath", "//*[@id='hotels']/form/div[5]/button").click()
 hotels = driver.find_elements("xpath", "//h4[contains(@class, 'list_title')]")
 hotels_name = [hotel.get_attribute("textContent") for hotel in hotels]
 
-for name in hotels_name:
-    print("Nazwa hotelu: ", name)
+# for name in hotels_name:
+#     print("Nazwa hotelu: ", name)
 
 # to do - pobrac liste cen
 
-time.sleep(500)
+assert hotels_name[0] == "Jumeirah Beach Hotel"
+assert hotels_name[1] == "Oasis Beach Tower"
+assert hotels_name[2] == "Rose Rayhaan Rotana"
+assert hotels_name[3] == "Hyatt Regency Perth"
+
+
+time.sleep(5)
 driver.quit()
