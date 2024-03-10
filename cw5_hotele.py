@@ -27,8 +27,13 @@ driver.find_element("id", "childInput").send_keys("2")
 driver.find_element("xpath", "//*[@id='hotels']/form/div[5]/button").click()
 
 # wynik wyszukiwania
-# hotels = driver.find_elements("xpath", "//h4[contains(@class, 'list_title')]")
-# hotels_name = [hotel.get_attribute() for hotel in hotels]
+hotels = driver.find_elements("xpath", "//h4[contains(@class, 'list_title')]")
+hotels_name = [hotel.get_attribute("textContent") for hotel in hotels]
+
+for name in hotels_name:
+    print("Nazwa hotelu: ", name)
+
+# to do - pobrac liste cen
 
 time.sleep(500)
 driver.quit()
