@@ -26,5 +26,9 @@ driver.find_element("id", "childInput").send_keys("2")
 # wyszukaj
 driver.find_element("xpath", "//*[@id='hotels']/form/div[5]/button").click()
 
+# wynik wyszukiwania
+# hotels = driver.find_elements("xpath", "//h4[contains(@class, 'list_title')]")
+# hotels_name = [hotel.get_attribute() for hotel in hotels]
+
 time.sleep(500)
 driver.quit()
