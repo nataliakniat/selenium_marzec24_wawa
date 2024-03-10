@@ -15,7 +15,7 @@ class SearchHotelPage:
     def set_city(self, city):
         self.driver.find_element("xpath", self.search_hotel_span_xpath).click()
         self.driver.find_element("xpath", self.search_hotel_input_xpath).send_keys(city)
-        self.driver.find_element("xpath", self.search_button_xpath).click()
+        self.driver.find_element("xpath", self.search_hotel_match_xpath).click()
 
     def set_date_range(self, checkin, checkout):
         self.driver.find_element("name", self.checkin_input_name).send_keys(checkin)
