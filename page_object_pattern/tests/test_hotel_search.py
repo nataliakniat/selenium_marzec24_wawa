@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 from page_object_pattern.pages.search_hotel import SearchHotelPage
-
+from page_object_pattern.pages.search_result import SearchResultPage
 
 class TestHotelSearch:
 
@@ -25,3 +25,13 @@ class TestHotelSearch:
 
         # wyszukiwanie
         search_hotel_page.perform_search()
+
+        # wyświetlanie wyników
+        result_page = SearchResultPage(self.driver)
+
+        hotels_name = result_page.get_hotels_name()
+
+        assert hotels_name[0] == "Jumeirah Beach Hotel"
+        assert hotels_name[1] == "Oasis Beach Tower"
+        assert hotels_name[2] == "Rose Rayhaan Rotana"
+        assert hotels_name[3] == "Hyatt Regency Perth"
